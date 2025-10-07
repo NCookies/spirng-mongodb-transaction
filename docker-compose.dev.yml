@@ -1,0 +1,57 @@
+# 로컬 개발용
+services:
+#    mongo:
+#        image: mongo:6.0
+#        container_name: ezcode-mongo
+#        restart: always
+#        ports:
+#            - "27017:27017"
+#        volumes:
+#            - ./db/mongo/data:/data/db
+#            - ./db/mongo/init:/docker-entrypoint-initdb.d
+#        environment:
+#            MONGO_INITDB_DATABASE: codetest
+#            MONGO_INITDB_ROOT_USERNAME: root
+#            MONGO_INITDB_ROOT_PASSWORD: 1234
+
+    rs01p:
+        image: mongo:6.0
+        container_name: rs01p
+        ports:
+            - "10021:10021"
+        volumes:
+            - ./replicaset/rs01p:/data/db
+            - ./scripts:/scripts
+            - ./js:/js
+        command:
+            - '--port'
+            - '10021'
+            - '--replSet'
+            - 'rs01'
+            - '--bind_ip_all'
+    rs01s:
+        image: mongo:6.0
+        container_name: rs01s
+        ports:
+            - "10022:10022"
+        volumes:
+            - ./replicaset/rs01s:/data/db
+        command:
+            - '--port'
+            - '10022'
+            - '--replSet'
+            - 'rs01'
+            - '--bind_ip_all'
+    rs01a:
+        image: mongo:6.0
+        container_name: rs01a
+        ports:
+            - "10023:10023"
+        volumes:
+            - ./replicaset/rs01a:/data/db
+        command:
+            - '--port'
+            - '10023'
+            - '--replSet'
+            - 'rs01'
+            - '--bind_ip_all'
