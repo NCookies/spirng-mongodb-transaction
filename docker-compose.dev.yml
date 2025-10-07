@@ -1,19 +1,5 @@
 # 로컬 개발용
 services:
-#    mongo:
-#        image: mongo:6.0
-#        container_name: ezcode-mongo
-#        restart: always
-#        ports:
-#            - "27017:27017"
-#        volumes:
-#            - ./db/mongo/data:/data/db
-#            - ./db/mongo/init:/docker-entrypoint-initdb.d
-#        environment:
-#            MONGO_INITDB_DATABASE: codetest
-#            MONGO_INITDB_ROOT_USERNAME: root
-#            MONGO_INITDB_ROOT_PASSWORD: 1234
-
     rs01p:
         image: mongo:6.0
         container_name: rs01p

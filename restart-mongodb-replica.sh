@@ -42,7 +42,6 @@ echo "****** Waiting for ${UP_CONTAINER_DELAY} seconds ******"
 sleep $UP_CONTAINER_DELAY;
 
 echo "****************** Run Replica Set Shell Script ******************"
-#docker exec -it ${MONGO_PRIMARY_NAME} bash -c "${REPLICA_INIT_FILE_PATH}"
 docker exec -i ${MONGO_PRIMARY_NAME} bash < ${REPLICA_INIT_FILE_PATH}
 
 echo "****** Waiting for ${REPLICA_CONFIG_DELAY} seconds for replicaset configuration to be applied ******"
